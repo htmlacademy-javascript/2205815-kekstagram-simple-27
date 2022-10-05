@@ -23,11 +23,9 @@ console.log(RandomInteger(0,10));
 // проверка максимальной длины строки
 
 let testString = function getMaxString (textString, maxLength) {
-  textString = textString.length;
-
-  if(textString > maxLength ){
+  
+  if(textString.length > maxLength ){
     return console.log(testString = false);
   }
   return console.log(testString = true);
 }
-
