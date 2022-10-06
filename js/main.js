@@ -16,8 +16,7 @@ const getRandomInteger = (min, max) =>{
 
   return NaN;
 };
-
-
+getRandomInteger(1, 10);
 
 // проверка максимальной длины строки
 
@@ -28,4 +27,4 @@ const checkStringLength = (textString, maxLength) => {
   }
   return true;
 };
-
+checkStringLength('work', 10);
