@@ -1,6 +1,6 @@
 
 
-const = getRandomInteger = (min, max) =>{
+const getRandomInteger = (min, max) =>{
   if(typeof(min) !== 'number' && typeof(max) !== 'number') {
     return NaN;
   }
@@ -21,7 +21,7 @@ const = getRandomInteger = (min, max) =>{
 
 // проверка максимальной длины строки
 
-const = checkStringLength = (textString, maxLength) => {
+const checkStringLength = (textString, maxLength) => {
 
   if (textString > maxLength) {
     return false;
