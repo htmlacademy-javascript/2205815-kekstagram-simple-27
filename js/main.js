@@ -1,6 +1,6 @@
 
 
-let getRandomInteger = (min, max) =>{
+const = getRandomInteger = (min, max) =>{
   if(typeof(min) !== 'number' && typeof(max) !== 'number') {
     return NaN;
   }
@@ -14,18 +14,18 @@ let getRandomInteger = (min, max) =>{
     return Math.floor(Math.random() * (max - min + 1)) ;
   }
 
-  return  NaN;
+  return NaN;
 };
 
-getRandomInteger();
+
 
 // проверка максимальной длины строки
 
-let checkStringLength = (textString, maxLength) => {
+const = checkStringLength = (textString, maxLength) => {
 
   if (textString > maxLength) {
     return false;
   }
   return true;
 };
-checkStringLength();
+
