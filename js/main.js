@@ -17,7 +17,7 @@ getRandomInteger(1, 10);
 
 // проверка максимальной длины строки
 
-const checkStringLength = (textString, maxLength) => 
-(textString.length > maxLength) ? 'false' : 'true';
+const checkStringLength = (textString, maxLength) =>
+  (textString.length > maxLength) ? 'false' : 'true';
 
 checkStringLength('work', 10);
