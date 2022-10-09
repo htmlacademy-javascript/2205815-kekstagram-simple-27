@@ -9,7 +9,7 @@ const getRandomInteger = (min, max) =>{
   } else if (min >= 0 && max >= 0) {
     return Math.floor(Math.random() * (max - min + 1)) ;
   }
-  
+
   return NaN;
 };
 getRandomInteger(1, 10);
@@ -17,6 +17,6 @@ getRandomInteger(1, 10);
 // проверка максимальной длины строки
 
 const checkStringLength = (textString, maxLength) =>
-  (textString.length > maxLength) ? false : true;
+  (textString.length < maxLength);
 
 checkStringLength('work', 10);
