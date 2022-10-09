@@ -6,8 +6,7 @@ const getRandomInteger = (min, max) =>{
     max = min - max;
     min = min - max;
     return Math.floor(Math.random() * (max - min + 1)) ;
-  }
-  else if (min >= 0 && max >= 0) {
+  } else if (min >= 0 && max >= 0) {
     return Math.floor(Math.random() * (max - min + 1)) ;
   }
 
@@ -18,6 +17,6 @@ getRandomInteger(1, 10);
 // проверка максимальной длины строки
 
 const checkStringLength = (textString, maxLength) =>
-  (textString.length > maxLength) ? 'false' : 'true';
+  (textString.length < maxLength);
 
 checkStringLength('work', 10);
