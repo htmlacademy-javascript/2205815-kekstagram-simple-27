@@ -4,7 +4,6 @@ const checkStringLength = (textString, maxLength) =>
 checkStringLength('work', 10);
 
 
-
 const getRandomInteger = (min, max) => {
   if (min > max && min >= 0 && max >= 0) { // swap arguments if it need
     min = min + max;
@@ -56,9 +55,11 @@ const createPhoto = (i) => {
     description: ELEMENT_DESCRIPTIONS[i],
     likes: getRandomInteger(15, 200),
     comments: getRandomInteger(0, 200)
-  }
+  };
 };
 
 function getPhotos(){
   return Array.from({length: ELEMENT_COUNT},(_, i) => createPhoto(i));
 };
+
+getPhotos()
