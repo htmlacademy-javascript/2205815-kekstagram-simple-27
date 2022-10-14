@@ -4,6 +4,7 @@ const checkStringLength = (textString, maxLength) =>
 checkStringLength('work', 10);
 
 
+
 const getRandomInteger = (min, max) => {
   if (min > max && min >= 0 && max >= 0) { // swap arguments if it need
     min = min + max;
@@ -17,7 +18,8 @@ const getRandomInteger = (min, max) => {
   return NaN;
 };
 
-const elementDescription = [
+const ELEMENT_COUNT = 25;
+const ELEMENT_DESCRIPTIONS = [
   'курорт',
   'к пляжу',
   'лагуна',
@@ -45,18 +47,18 @@ const elementDescription = [
   'сафари',
 ];
 
-const createId = (i) => {
+const createPhoto = (i) => {
   const id = i + 1;
 
   return {
-    id: id,
+    id,
     url: `photos/${id}.jpg`,
-    description: elementDescription[i],
+    description: ELEMENT_DESCRIPTIONS[i],
     likes: getRandomInteger(15, 200),
     comments: getRandomInteger(0, 200)
-  };
+  }
 };
 
-const elementArr = Array.from({ length: 25 },(_, i) => createId(i));
-
-elementArr();
+function getPhotos(){
+  return Array.from({length: ELEMENT_COUNT},(_, i) => createPhoto(i));
+};
