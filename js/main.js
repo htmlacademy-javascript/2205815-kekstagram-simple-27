@@ -54,7 +54,7 @@ const createId = (i) => {
     description: elementDescription[i],
     likes: getRandomInteger(15, 200),
     comments: getRandomInteger(0, 200)
-  }
+  };
 };
 
 const elementArr = Array.from({ length: 25 },(_, i) => createId(i));
