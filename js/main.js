@@ -60,6 +60,6 @@ const createPhoto = (i) => {
 
 function getPhotos(){
   return Array.from({length: ELEMENT_COUNT},(_, i) => createPhoto(i));
-};
+}
 
-getPhotos()
+getPhotos();
