@@ -4,7 +4,6 @@ const checkStringLength = (textString, maxLength) =>
 checkStringLength('work', 10);
 
 
-
 const getRandomInteger = (min, max) => {
   if (min > max && min >= 0 && max >= 0) { // swap arguments if it need
     min = min + max;
@@ -59,3 +58,5 @@ const createId = (i) => {
 };
 
 const elementArr = Array.from({ length: 25 },(_, i) => createId(i));
+
+elementArr();
