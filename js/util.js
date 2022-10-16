@@ -8,10 +8,12 @@ const getRandomInteger = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1));
   }
 
-    return NaN;
-  };
+  return NaN;
+};
 
 const checkStringLength = (textString, maxLength) =>
   (textString.length < maxLength);
+
+checkStringLength('work', 10);
 
 export {getRandomInteger};
