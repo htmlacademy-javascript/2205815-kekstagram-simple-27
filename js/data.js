@@ -30,16 +30,16 @@ const ELEMENT_DESCRIPTIONS = [
 
 
 const createPhoto = (i) => {
-    const id = i + 1;
-  
-    return {
-      id,
-      url: `photos/${id}.jpg`,
-      description: ELEMENT_DESCRIPTIONS[i],
-      likes: getRandomInteger(15, 200),
-      comments: getRandomInteger(0, 200)
-    };
+  const id = i + 1;
+
+  return {
+    id,
+    url: `photos/${id}.jpg`,
+    description: ELEMENT_DESCRIPTIONS[i],
+    likes: getRandomInteger(15, 200),
+    comments: getRandomInteger(0, 200)
   };
+};
 
 
   function getPhotos(count){
