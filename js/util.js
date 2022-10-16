@@ -3,11 +3,11 @@ const getRandomInteger = (min, max) => {
     min = min + max;
     max = min - max;
     min = min - max;
-      return Math.floor(Math.random() * (max - min + 1));
-    } else if (min >= 0 && max >= 0) {
-      return Math.floor(Math.random() * (max - min + 1));
-    }
-  
+    return Math.floor(Math.random() * (max - min + 1));
+  } else if (min >= 0 && max >= 0) {
+    return Math.floor(Math.random() * (max - min + 1));
+  }
+
     return NaN;
   };
 
