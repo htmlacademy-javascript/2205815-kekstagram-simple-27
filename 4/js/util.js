@@ -1,4 +1,4 @@
-const getRandomInteger = (min, max) => {
+export const getRandomInteger = (min, max) => {
   if (min > max && min >= 0 && max >= 0) { // swap arguments if it need
     min = min + max;
     max = min - max;
@@ -15,5 +15,3 @@ const checkStringLength = (textString, maxLength) =>
   (textString.length < maxLength);
 
 checkStringLength('work', 10);
-
-export {getRandomInteger};
