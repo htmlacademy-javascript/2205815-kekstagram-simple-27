@@ -2,7 +2,9 @@ import {getPhotos} from './data.js';
 
 const pictureList = document.querySelector('.pictures');
 const templateList = document.querySelector('#picture').content.querySelector('.picture');
-const hiddenTitle = document.querySelector('.pictures__title').classList.remove('visually-hidden');
+const hiddenTitle = document.querySelector('.pictures__title');
+
+hiddenTitle.classList.remove('visually-hidden');
 
 const anothePhotos = getPhotos(25);
 
