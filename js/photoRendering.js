@@ -1,13 +1,13 @@
 import {getPhotos} from './data.js';
 
-let pictureList = document.querySelector('.pictures');
-let templateList = document.querySelector('#picture').content.querySelector('.picture');
-let hiddenTitle = document.querySelector('.pictures__title').classList.remove('visually-hidden');
+const pictureList = document.querySelector('.pictures');
+const templateList = document.querySelector('#picture').content.querySelector('.picture');
+const hiddenTitle = document.querySelector('.pictures__title').classList.remove('visually-hidden');
 
-let anothePhotos = getPhotos(25);
+const anothePhotos = getPhotos(25);
 
- anothePhotos.forEach((photo) => {
-  let photoElement = templateList.cloneNode(true);
+anothePhotos.forEach((photo) => {
+  const photoElement = templateList.cloneNode(true);
   photoElement.querySelector('.picture__img').src = photo.url;
   photoElement.querySelector('.picture__img').alt = photo.description;
   photoElement.querySelector('.picture__likes').textContent = photo.likes;
