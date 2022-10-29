@@ -1,8 +1,7 @@
-import { getPhotos } from './data.js';
-
 const pictureList = document.querySelector('.pictures');
 const template = document.querySelector('#picture').content.querySelector('.picture');
 const hiddenTitle = document.querySelector('.pictures__title');
+const photoFragment = document.createDocumentFragment();
 
 hiddenTitle.classList.remove('visually-hidden');
 
@@ -16,10 +15,7 @@ const createPhoto = ({ url, description, likes, comments }) => {
   return photoElement;
 };
 
-
-const createFragmentAndAddPhotos = () => {
-  const photoFragment = document.createDocumentFragment();
-  const arrayOfPhotos = getPhotos(25);
+const createPhotosList = (arrayOfPhotos) => {
 
   arrayOfPhotos.forEach((photo) => {
     const photoElement = createPhoto(photo);
@@ -29,8 +25,8 @@ const createFragmentAndAddPhotos = () => {
   return photoFragment;
 };
 
-export const renderPhotos = () => {
-  const fragmentWithPhotos = createFragmentAndAddPhotos();
+export const renderPhotos = (arrayOfPhotos) => {
+  const photosList = createPhotosList(arrayOfPhotos);
 
-  pictureList.appendChild(fragmentWithPhotos);
+  pictureList.appendChild(photosList);
 };
