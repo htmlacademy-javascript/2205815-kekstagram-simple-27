@@ -29,7 +29,7 @@ const ELEMENT_DESCRIPTIONS = [
 ];
 
 
-const createPhoto = (i) => {
+export const createPhoto = (i) => {
   const id = i + 1;
 
   return {
