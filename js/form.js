@@ -4,6 +4,10 @@ const imageFormEdit = document.querySelector('.img-upload__overlay');
 const closeBtn = imageFormEdit.querySelector('.img-upload__cancel');
 const imageForm = document.querySelector('#upload-select-image');
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 const closeForm = () => {
   imageFormEdit.classList.add('hidden');
   imageForm.reset();
@@ -20,6 +24,10 @@ const escBtnListener = (evt) => {
   }
 };
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 const closeAndResetForm = () => {
   closeForm();
   document.removeEventListener('keydown', escBtnListener );
