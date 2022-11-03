@@ -1,36 +1,27 @@
-
 const uploadBtn = document.querySelector('.img-upload__input');
 const imageFormEdit = document.querySelector('.img-upload__overlay');
 const closeBtn = imageFormEdit.querySelector('.img-upload__cancel');
 const imageForm = document.querySelector('#upload-select-image');
 
-
-const closeForm = () => {
+const closeFormClickHandler = () => {
   imageFormEdit.classList.add('hidden');
   imageForm.reset();
 };
 
-const submitHandler = (evt) => {
+const formSubmitHandler = (evt) => {
   evt.preventDefault();
-  closeForm();
+  closeFormClickHandler();
 };
 
-const escBtnListener = (evt) => {
-  if( evt.key === 'Escape'){
-    closeForm();
+const cancelKeydownHandler = (evt) => {
+  if(evt.key === 'Escape'){
+    closeFormClickHandler();
   }
 };
 
-const closeAndResetForm = () => {
-  closeForm();
-  document.removeEventListener('keydown', escBtnListener );
-  imageForm.removeEventListener('submit', submitHandler);
-  closeBtn.removeEventListener('click', closeAndResetForm);
-};
-
 uploadBtn.addEventListener('change', () => {
-  document.addEventListener('keydown', escBtnListener );
-  imageForm.addEventListener('submit', submitHandler);
-  closeBtn.addEventListener('click', closeAndResetForm);
+  document.addEventListener('keydown', cancelKeydownHandler);
+  imageForm.addEventListener('submit', formSubmitHandler);
+  closeBtn.addEventListener('click', closeFormClickHandler);
   imageFormEdit.classList.remove('hidden');
 });
