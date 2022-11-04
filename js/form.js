@@ -2,10 +2,12 @@ const uploadBtn = document.querySelector('.img-upload__input');
 const imageFormEdit = document.querySelector('.img-upload__overlay');
 const closeBtn = imageFormEdit.querySelector('.img-upload__cancel');
 const imageForm = document.querySelector('#upload-select-image');
+const imagePreview = document.querySelector('.img-upload__preview');
 
 const closeFormClickHandler = () => {
   imageFormEdit.classList.add('hidden');
   imageForm.reset();
+  imagePreview.classList = '';
 };
 
 const formSubmitHandler = (evt) => {
@@ -14,14 +16,17 @@ const formSubmitHandler = (evt) => {
 };
 
 const cancelKeydownHandler = (evt) => {
-  if(evt.key === 'Escape'){
+  if(evt.key === 'Escape') {
     closeFormClickHandler();
-  }
+  };
+};
+const initForm = () => {
+  uploadBtn.addEventListener('change', () => {
+    document.addEventListener('keydown', cancelKeydownHandler);
+    imageForm.addEventListener('submit', formSubmitHandler);
+    closeBtn.addEventListener('click', closeFormClickHandler);
+    imageFormEdit.classList.remove('hidden');
+  });
 };
 
-uploadBtn.addEventListener('change', () => {
-  document.addEventListener('keydown', cancelKeydownHandler);
-  imageForm.addEventListener('submit', formSubmitHandler);
-  closeBtn.addEventListener('click', closeFormClickHandler);
-  imageFormEdit.classList.remove('hidden');
-});
+initForm();

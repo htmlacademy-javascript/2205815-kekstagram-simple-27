@@ -10,7 +10,7 @@ const imagePreview = document.querySelector('.img-upload__preview');
 const inputScaleValue = scaleInputValue.value.split('%');
 
 const decreasePictureClickHandle = () => {   
-    if (inputScaleValue[0] <= MIN_VALUE_SCALE){
+    if (inputScaleValue[0] <= MIN_VALUE_SCALE) {
         scaleInputValue.value = `${MIN_VALUE_SCALE}%`;
         inputScaleValue[0] = MIN_VALUE_SCALE;
     }else{
@@ -20,8 +20,8 @@ const decreasePictureClickHandle = () => {
     imagePreview.style.transform = `scale(${inputScaleValue[0]}%)`;
 };
 
-const increasePicture = () => {
-    if(inputScaleValue[0] >= MAX_VALUE_SCALE){
+const increasePictureClickHandle = () => {
+    if(inputScaleValue[0] >= MAX_VALUE_SCALE) {
         scaleInputValue.value = `${MAX_VALUE_SCALE}%`;
         inputScaleValue[0] = MAX_VALUE_SCALE;
     }else{
@@ -32,4 +32,4 @@ const increasePicture = () => {
 };
 
 smallerBtn.addEventListener('click', decreasePictureClickHandle);
-biggerBtn.addEventListener('click', increasePicture);
+biggerBtn.addEventListener('click', increasePictureClickHandle);
