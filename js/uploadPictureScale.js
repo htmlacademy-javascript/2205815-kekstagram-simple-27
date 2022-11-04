@@ -9,26 +9,26 @@ const imagePreview = document.querySelector('.img-upload__preview');
 
 const inputScaleValue = scaleInputValue.value.split('%');
 
-const decreasePictureClickHandle = () => {   
-    if (inputScaleValue[0] <= MIN_VALUE_SCALE) {
-        scaleInputValue.value = `${MIN_VALUE_SCALE}%`;
-        inputScaleValue[0] = MIN_VALUE_SCALE;
-    }else{
-        scaleInputValue.value = `${inputScaleValue[0] - STEP_VALUE_SCALE}%`;
-        inputScaleValue[0] = inputScaleValue[0] - STEP_VALUE_SCALE;
-    };
-    imagePreview.style.transform = `scale(${inputScaleValue[0]}%)`;
+const decreasePictureClickHandle = () => {
+  if (inputScaleValue[0] <= MIN_VALUE_SCALE) {
+    scaleInputValue.value = `${MIN_VALUE_SCALE}%`;
+    inputScaleValue[0] = MIN_VALUE_SCALE;
+  }else{
+    scaleInputValue.value = `${inputScaleValue[0] - STEP_VALUE_SCALE}%`;
+    inputScaleValue[0] = inputScaleValue[0] - STEP_VALUE_SCALE;
+  }
+  imagePreview.style.transform = `scale(${inputScaleValue[0]}%)`;
 };
 
 const increasePictureClickHandle = () => {
-    if(inputScaleValue[0] >= MAX_VALUE_SCALE) {
-        scaleInputValue.value = `${MAX_VALUE_SCALE}%`;
-        inputScaleValue[0] = MAX_VALUE_SCALE;
-    }else{
-        scaleInputValue.value = `${inputScaleValue[0] + STEP_VALUE_SCALE}%`;
-        inputScaleValue[0] = inputScaleValue[0] + STEP_VALUE_SCALE;
-    };
-    imagePreview.style.transform = `scale(${inputScaleValue[0]}%)`;
+  if(inputScaleValue[0] >= MAX_VALUE_SCALE) {
+    scaleInputValue.value = `${MAX_VALUE_SCALE}%`;
+    inputScaleValue[0] = MAX_VALUE_SCALE;
+  }else{
+    scaleInputValue.value = `${inputScaleValue[0] + STEP_VALUE_SCALE}%`;
+    inputScaleValue[0] = inputScaleValue[0] + STEP_VALUE_SCALE;
+  }
+  imagePreview.style.transform = `scale(${inputScaleValue[0]}%)`;
 };
 
 smallerBtn.addEventListener('click', decreasePictureClickHandle);

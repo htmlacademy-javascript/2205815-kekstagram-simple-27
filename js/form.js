@@ -18,7 +18,7 @@ const formSubmitHandler = (evt) => {
 const cancelKeydownHandler = (evt) => {
   if(evt.key === 'Escape') {
     closeFormClickHandler();
-  };
+  }
 };
 const initForm = () => {
   uploadBtn.addEventListener('change', () => {
