@@ -1,11 +1,3 @@
-import { renderPhotos } from './photoRendering.js';
-import { getPhotos } from './data.js';
-import './form.js';
-import './uploadPictureEffects.js';
-import './uploadPictureScale.js';
-/*
-renderPhotos(getPhotos(25));
-
 const STEP_VALUE_SCALE = 25;
 const MAX_VALUE_SCALE = 100;
 const MIN_VALUE_SCALE = 25;
@@ -17,7 +9,7 @@ const imagePreview = document.querySelector('.img-upload__preview');
 
 const inputScaleValue = scaleInputValue.value.split('%');
 
-const decreasePicture = () => {   
+const decreasePictureClickHandle = () => {   
     if (inputScaleValue[0] <= MIN_VALUE_SCALE){
         scaleInputValue.value = `${MIN_VALUE_SCALE}%`;
         inputScaleValue[0] = MIN_VALUE_SCALE;
@@ -39,17 +31,5 @@ const increasePicture = () => {
     imagePreview.style.transform = `scale(${inputScaleValue[0]}%)`;
 };
 
-smallerBtn.addEventListener('click', decreasePicture);
+smallerBtn.addEventListener('click', decreasePictureClickHandle);
 biggerBtn.addEventListener('click', increasePicture);
-
-const effectsArr = document.querySelectorAll('.effects__radio');
-
-
-for ( let i = 0; i < effectsArr.length; i++){
-    effectsArr[i].addEventListener('change', test)
-}
-
-function test () {
-    imagePreview.classList = '';
-    imagePreview.classList.add(`effects__preview--${this.value}`); 
-};*/
