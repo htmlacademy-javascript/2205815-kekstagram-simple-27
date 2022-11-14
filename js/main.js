@@ -1,7 +1,7 @@
-import { renderPhotos } from './photoRendering.js';
+import {renderPhotos} from './users-pictures.js';
 import './form.js';
-import './uploadPictureEffects.js';
-import './uploadPictureScale.js';
-import { server } from './fetch.js';
+import './picture-effects.js';
+import './picture-scale.js';
+import {getDataPictures} from './api.js';
 
-server(renderPhotos);
+getDataPictures(renderPhotos);

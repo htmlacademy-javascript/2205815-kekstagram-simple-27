@@ -1,9 +1,9 @@
-export const server = (onSuccess) => {
+export const getDataPictures = (onSuccess) => {
     fetch('https://27.javascript.pages.academy/kekstagram-simple/data')
       .then((response) => {
         if (response.ok) {
           return response.json();
-        }
+        };
         return Promise.reject(`${response.status} ${response.statusText}`);
       })
       .then((res) => {
@@ -12,7 +12,7 @@ export const server = (onSuccess) => {
       .catch ((error) => alert(`Ошибка ${error}, попробуйте еще раз`));
   };
   
-  export const post = (body, onSuccess, onError) => {
+  export const postDataPictures = (body, onSuccess, onError) => {
     fetch('https://27.javascript.pages.academy/kekstagram-simple',
       {
         method: 'POST',
@@ -22,7 +22,7 @@ export const server = (onSuccess) => {
         if (response.ok){
           onSuccess();
           return;
-        }
+        };
         return Promise.reject(`${response.status} ${response.statusText}`);
       })
       .catch((error) => {

@@ -1,4 +1,5 @@
-import {post} from './fetch.js';
+import {postDataPictures} from './api.js';
+
 const uploadBtn = document.querySelector('.img-upload__input');
 const imageFormEdit = document.querySelector('.img-upload__overlay');
 const closeBtn = imageFormEdit.querySelector('.img-upload__cancel');
@@ -7,38 +8,40 @@ const imagePreview = document.querySelector('.img-upload__preview');
 const submitBtn = imageForm.querySelector('#upload-submit');
 const templateSuccess = document.querySelector('#success').content.querySelector('.success');
 const templateError = document.querySelector('#error').content.querySelector('.error');
-const main = document.querySelector('main');
+const documentBody = document.querySelector('body');
 const successModal = templateSuccess.cloneNode(true);
 const errorModal = templateError.cloneNode(true);
 const successBtn = successModal.querySelector('.success__button');
 const errorBtn = errorModal.querySelector('.error__button');
 
+documentBody.appendChild(successModal);
+successModal.classList.add('hidden');
+
+documentBody.appendChild(errorModal);
+errorModal.classList.add('hidden');
+
+const closeErrorModal = () => {
+  errorModal.classList.add('hidden');
+  imageFormEdit.classList.remove('hidden');
+};
+
 errorModal.addEventListener('click', (evt) => {
+  errorBtn.addEventListener('click', closeErrorModal);
   if (evt.target === evt.currentTarget) {
-    errorModal.classList.add('hidden');
+    closeErrorModal()
   }
 });
+
 successModal.addEventListener('click', (evt) => {
   if (evt.target === evt.currentTarget) {
     successModal.classList.add('hidden');
   }
 });
 
-main.appendChild(successModal);
-successModal.classList.add('hidden');
-
-main.appendChild(errorModal);
-errorModal.classList.add('hidden');
-
 successBtn.addEventListener('click', () => {
   successModal.classList.add('hidden');
+  closeFormClickHandler(true);
 });
-
-errorBtn.addEventListener('click', () => {
-  errorModal.classList.add('hidden');
-  imageFormEdit.classList.remove('hidden');
-});
-
 
 const closeResultForms = (evt) => {
   if (evt.key === 'Escape') {
@@ -57,13 +60,13 @@ const createErrorModal = () => {
   errorModal.classList.remove('hidden');
 };
 
-const closeFormClickHandler = (needReset) => {
+const closeFormClickHandler = (reset) => {
   imageFormEdit.classList.add('hidden');
-  if(needReset){
+  if(reset){
     imageForm.reset();
     imagePreview.classList = '';
+    imagePreview.style.transform = 'scale(100%)'
   }
-
 };
 
 const onSuccess = () => {
@@ -82,13 +85,12 @@ const formSubmitHandler = (evt) => {
   evt.preventDefault();
   submitBtn.setAttribute('disabled', 'disabled');
   const formData = new FormData(evt.target);
-  post(formData, onSuccess, onError);
-
+  postDataPictures(formData, onSuccess, onError);
 };
 
 const cancelKeydownHandler = (evt) => {
   if(evt.key === 'Escape') {
-    closeFormClickHandler();
+    closeFormClickHandler(true);
   }
 };
 
