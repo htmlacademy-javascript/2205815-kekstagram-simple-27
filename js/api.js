@@ -1,15 +1,17 @@
+import {createDataErrorModal} from './form.js'
+
 export const getDataPictures = (onSuccess) => {
-  fetch('https://27.javascript.pages.academy/kekstagram-simple/data')
+  fetch('https://27.javascript.pages.academy/kekstagram-simple/dat')
     .then((response) => {
       if (response.ok) {
         return response.json();
-        };
-        return Promise.reject(`${response.status} ${response.statusText}`);
-      })
+      }
+      return Promise.reject(`${response.status} ${response.statusText}`);
+    })
     .then((res) => {
-        onSuccess(res);
-      })
-    .catch ((error) => alert(`Ошибка ${error}, попробуйте еще раз`));
+      onSuccess(res);
+    })
+    .catch ((error) => createDataErrorModal());
   };
   
 export const postDataPictures = (body, onSuccess, onError) => {

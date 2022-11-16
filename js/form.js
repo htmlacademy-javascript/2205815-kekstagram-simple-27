@@ -11,8 +11,25 @@ const templateError = document.querySelector('#error').content.querySelector('.e
 const documentBody = document.querySelector('body');
 const successModal = templateSuccess.cloneNode(true);
 const errorModal = templateError.cloneNode(true);
+const dataErrorModal = templateError.cloneNode(true);
 const successBtn = successModal.querySelector('.success__button');
 const errorBtn = errorModal.querySelector('.error__button');
+
+
+documentBody.appendChild(dataErrorModal);
+dataErrorModal.classList.add('hidden');
+
+
+const closeDataErrorModal = () => {
+  dataErrorModal.classList.add('hidden')
+};
+
+export const createDataErrorModal =() => {
+  dataErrorModal.classList.remove('hidden')
+  dataErrorModal.querySelector('.error__title').textContent = 'Ошибка получения данных с сервера';
+  dataErrorModal.querySelector('.error__button').classList.add('hidden');
+  setTimeout(closeDataErrorModal, 1500)
+};
 
 documentBody.appendChild(successModal);
 successModal.classList.add('hidden');
