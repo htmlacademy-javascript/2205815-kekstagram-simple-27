@@ -12,8 +12,8 @@ const buttonsList = document.querySelector('.img-upload__scale');
 
 const changeScale = (value) => {
   inputScaleValue -= value;
-  inputScaleValue < MIN_VALUE_SCALE ? inputScaleValue = MIN_VALUE_SCALE : inputScaleValue;
-  inputScaleValue > MAX_VALUE_SCALE ? inputScaleValue = MAX_VALUE_SCALE : inputScaleValue;
+  inputScaleValue <= MIN_VALUE_SCALE ? inputScaleValue = MIN_VALUE_SCALE : inputScaleValue;
+  inputScaleValue >= MAX_VALUE_SCALE ? inputScaleValue = MAX_VALUE_SCALE : inputScaleValue;
   imagePreview.style.transform = `scale(${inputScaleValue}%)`;
   inputScale.value = `${inputScaleValue}%`;
 };
