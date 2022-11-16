@@ -28,7 +28,6 @@ const ELEMENT_DESCRIPTIONS = [
   'сафари',
 ];
 
-
 export const createPhoto = (i) => {
   const id = i + 1;
 
@@ -40,6 +39,5 @@ export const createPhoto = (i) => {
     comments: getRandomInteger(0, 200)
   };
 };
-
 
 export const getPhotos = (count) => Array.from({length: count},(_, i) => createPhoto(i));
