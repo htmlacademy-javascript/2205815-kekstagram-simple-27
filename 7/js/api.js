@@ -15,7 +15,7 @@ export const getDataPictures = (onSuccess) => {
 };
 
 export const postDataPictures = (body, onSuccess, onError) => {
-  fetch('https://27.javascript.pages.academy/kekstagram-simpl',
+  fetch('https://27.javascript.pages.academy/kekstagram-simple',
     {
       method: 'POST',
       body,
