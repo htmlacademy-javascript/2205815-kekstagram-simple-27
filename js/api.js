@@ -1,21 +1,21 @@
-import {createDataErrorModal} from './form.js'
+import {createDataErrorModal} from './form.js';
 
 export const getDataPictures = (onSuccess) => {
-  fetch('https://27.javascript.pages.academy/kekstagram-simple/dat')
+  fetch('https://27.javascript.pages.academy/kekstagram-simple/data')
     .then((response) => {
       if (response.ok) {
         return response.json();
       }
       return Promise.reject(`${response.status} ${response.statusText}`);
     })
-    .then((res) => {
-      onSuccess(res);
+    .then((response) => {
+      onSuccess(response);
     })
-    .catch ((error) => createDataErrorModal());
-  };
-  
+    .catch (() => createDataErrorModal());
+};
+
 export const postDataPictures = (body, onSuccess, onError) => {
-  fetch('https://27.javascript.pages.academy/kekstagram-simple',
+  fetch('https://27.javascript.pages.academy/kekstagram-simpl',
     {
       method: 'POST',
       body,
@@ -24,10 +24,10 @@ export const postDataPictures = (body, onSuccess, onError) => {
       if (response.ok){
         onSuccess();
         return;
-      };
-        return Promise.reject(`${response.status} ${response.statusText}`);
-      })
+      }
+      return Promise.reject(`${response.status} ${response.statusText}`);
+    })
     .catch((error) => {
       onError(error);
-  });
+    });
 };
