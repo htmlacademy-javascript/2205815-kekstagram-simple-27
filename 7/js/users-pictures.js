@@ -11,17 +11,14 @@ const createPhoto = ({ url, description, likes, comments }) => {
   photoElement.querySelector('.picture__img').alt = description;
   photoElement.querySelector('.picture__likes').textContent = likes;
   photoElement.querySelector('.picture__comments').textContent = comments;
-
   return photoElement;
 };
 
 const createPhotosList = (arrayOfPhotos) => {
-
   arrayOfPhotos.forEach((photo) => {
     const photoElement = createPhoto(photo);
     photoFragment.appendChild(photoElement);
   });
-
   return photoFragment;
 };
 
