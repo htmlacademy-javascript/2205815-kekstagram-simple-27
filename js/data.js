@@ -39,5 +39,3 @@ export const createPhoto = (i) => {
     comments: getRandomInteger(0, 200)
   };
 };
-
-export const getPhotos = (count) => Array.from({length: count},(_, i) => createPhoto(i));
