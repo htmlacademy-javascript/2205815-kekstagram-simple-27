@@ -1,6 +1,3 @@
-//import {resetForm} from './util.js';
-//import {closeImageFormEdit} from './dialogs.js';
-
 export const getDataPictures = (onSuccess, onError) => {
   fetch('https://27.javascript.pages.academy/kekstagram-simple/data')
     .then((response) => {
@@ -17,7 +14,7 @@ export const getDataPictures = (onSuccess, onError) => {
     });
 };
 
-export const postDataPictures = (body, onSuccess, onError) => {
+export const postDataPictures = (body, onSuccess, onError, reset) => {
   fetch('https://27.javascript.pages.academy/kekstagram-simple',
     {
       method: 'POST',
@@ -26,6 +23,8 @@ export const postDataPictures = (body, onSuccess, onError) => {
     .then((response) => {
       if (response.ok) {
         onSuccess(response);
+        reset(response);
+        return;
       }
       return Promise.reject(`${response.status} ${response.statusText}`);
     })

@@ -1,7 +1,4 @@
-//import {resetForm} from './util.js';
-
 const imageForm = document.querySelector('#upload-select-image');
-//const imageFormEdit = document.querySelector('.img-upload__overlay');
 const submitBtn = imageForm.querySelector('#upload-submit');
 const templateSuccess = document.querySelector('#success').content.querySelector('.success');
 const templateError = document.querySelector('#error').content.querySelector('.error');
@@ -24,48 +21,20 @@ const removeModals = () => {
   dataErrorModal.remove();
 };
 
-//const closeImageFormEdit = () => {
-// imageFormEdit.classList.add('hidden');
-//};
-
-const ClickSuccessBtnHandler = () => {
-  //closeImageFormEdit();
-  removeModals();
-  resetSubmitBtn();
-  //resetForm();
-};
-
-const EscSuccessBtnHandler = (evt) => {
-  if (evt.key === 'Escape') {
-    //closeImageFormEdit();
-    removeModals();
-    resetSubmitBtn();
-    //resetForm();
-  }
-};
-
-const ClickErrorBtnHandler = () => {
+const ClickBtnHandler = () => {
   removeModals();
   resetSubmitBtn();
 };
 
-const EscErrorBtnHandler = (evt) => {
+const EscBtnHandler = (evt) => {
   if (evt.key === 'Escape') {
     removeModals();
     resetSubmitBtn();
   }
 };
 
-const missClickSuccessHandler = (evt) => {
-  if (evt.target === evt.currentTarget) {
-    //closeImageFormEdit();
-    removeModals();
-    resetSubmitBtn();
-    //resetForm();
-  }
-};
 
-const missClickErrorHandler = (evt) => {
+const missClicksHandler = (evt) => {
   if (evt.target === evt.currentTarget) {
     removeModals();
     resetSubmitBtn();
@@ -82,14 +51,14 @@ export const showDataErrorMessage = () => {
 
 export const showSuccessDialog = () => {
   documentBody.appendChild(successModal);
-  document.addEventListener('keydown', EscSuccessBtnHandler);
-  successBtn.addEventListener('click', ClickSuccessBtnHandler);
-  successModal.addEventListener('click', missClickSuccessHandler);
+  document.addEventListener('keydown', EscBtnHandler);
+  successBtn.addEventListener('click', ClickBtnHandler);
+  successModal.addEventListener('click', missClicksHandler);
 };
 
 export const showErrorDialog = () => {
   documentBody.appendChild(errorModal);
-  document.addEventListener('keydown', EscErrorBtnHandler);
-  errorBtn.addEventListener('click', ClickErrorBtnHandler);
-  errorModal.addEventListener('click', missClickErrorHandler);
+  document.addEventListener('keydown', EscBtnHandler);
+  errorBtn.addEventListener('click', ClickBtnHandler);
+  errorModal.addEventListener('click', missClicksHandler);
 };

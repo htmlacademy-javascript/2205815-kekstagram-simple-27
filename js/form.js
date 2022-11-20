@@ -28,7 +28,7 @@ const formSubmitHandler = (evt) => {
   submitBtn.disabled = true;
   submitBtn.textContent = 'Загрузка...';
   const formData = new FormData(evt.target);
-  postDataPictures(formData, showSuccessDialog, showErrorDialog);
+  postDataPictures(formData, showSuccessDialog, showErrorDialog, resetAndCloseForm);
 };
 
 const showFormEdit = () => {
