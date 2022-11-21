@@ -4,32 +4,36 @@ const MIN_VALUE_SCALE = 25;
 
 const smallerBtn = document.querySelector('.scale__control--smaller');
 const biggerBtn = document.querySelector('.scale__control--bigger');
-const inputScale = document.querySelector('.scale__control--value');
 const imagePreview = document.querySelector('.img-upload__preview');
 const buttonsList = document.querySelector('.img-upload__scale');
+const scaleControl = document.querySelector('.scale__control--value');
 
+export const setInitialScale = () => {
+  scaleControl.value = MAX_VALUE_SCALE;
+};
 
 const changeScale = (step) => {
   let currentScale = document.querySelector('.scale__control--value').value.replace('%', '');
-  currentScale -= step;
-  if(currentScale < MIN_VALUE_SCALE) {
-    currentScale = Math.max(MIN_VALUE_SCALE, currentScale);
+  const value = Number(currentScale) + step;
+  if (step < 0) {
+    currentScale = Math.max(MIN_VALUE_SCALE, value);
   }
-  if(currentScale > MAX_VALUE_SCALE){
-    currentScale = Math.min(MAX_VALUE_SCALE, currentScale);
-  }
-  imagePreview.style.transform = `scale(${currentScale}%)`;
-  inputScale.value = `${currentScale}%`;
-};
 
+  if (step > 0) {
+    currentScale = Math.min(MAX_VALUE_SCALE, value);
+  }
+
+  imagePreview.style.transform = `scale(${currentScale}%)`;
+  scaleControl.value = `${currentScale}%`;
+};
 
 buttonsList.addEventListener('click', (evt) => {
   switch (evt.target) {
     case smallerBtn:
-      changeScale(STEP_VALUE_SCALE);
+      changeScale(-STEP_VALUE_SCALE);
       break;
     case biggerBtn:
-      changeScale(-STEP_VALUE_SCALE);
+      changeScale(STEP_VALUE_SCALE);
       break;
   }
 });

@@ -1,19 +1,13 @@
-const imageForm = document.querySelector('#upload-select-image');
-const submitBtn = imageForm.querySelector('#upload-submit');
+import {enableSubmitBtn, closeForm} from './form.js';
+
 const templateSuccess = document.querySelector('#success').content.querySelector('.success');
 const templateError = document.querySelector('#error').content.querySelector('.error');
+const templateDataError = document.querySelector('#data__error').content.querySelector('.data__error');
 const documentBody = document.querySelector('body');
 const successModal = templateSuccess.cloneNode(true);
 const errorModal = templateError.cloneNode(true);
-const dataErrorModal = templateError.cloneNode(true);
-const successBtn = successModal.querySelector('.success__button');
-const errorBtn = errorModal.querySelector('.error__button');
+const dataErrorModal = templateDataError.cloneNode(true);
 
-
-const resetSubmitBtn = () => {
-  submitBtn.textContent = 'Опубликовать';
-  submitBtn.disabled = false;
-};
 
 const removeModals = () => {
   successModal.remove();
@@ -21,44 +15,42 @@ const removeModals = () => {
   dataErrorModal.remove();
 };
 
-const ClickBtnHandler = () => {
+const clickBtnHandler = () => {
   removeModals();
-  resetSubmitBtn();
 };
 
-const EscBtnHandler = (evt) => {
+const escBtnHandler = (evt) => {
   if (evt.key === 'Escape') {
     removeModals();
-    resetSubmitBtn();
   }
 };
-
 
 const missClicksHandler = (evt) => {
   if (evt.target === evt.currentTarget) {
     removeModals();
-    resetSubmitBtn();
   }
 };
 
-
 export const showDataErrorMessage = () => {
   documentBody.appendChild(dataErrorModal);
-  dataErrorModal.querySelector('.error__title').textContent = 'Ошибка получения данных с сервера';
-  dataErrorModal.querySelector('.error__button').classList.add('hidden');
   setTimeout(removeModals, 1500);
 };
 
 export const showSuccessDialog = () => {
+  closeForm();
+  enableSubmitBtn();
   documentBody.appendChild(successModal);
-  document.addEventListener('keydown', EscBtnHandler);
-  successBtn.addEventListener('click', ClickBtnHandler);
+  const successBtn = successModal.querySelector('.success__button');
+  document.addEventListener('keydown', escBtnHandler);
+  successBtn.addEventListener('click', clickBtnHandler);
   successModal.addEventListener('click', missClicksHandler);
 };
 
 export const showErrorDialog = () => {
+  enableSubmitBtn();
   documentBody.appendChild(errorModal);
-  document.addEventListener('keydown', EscBtnHandler);
-  errorBtn.addEventListener('click', ClickBtnHandler);
+  const errorBtn = errorModal.querySelector('.error__button');
+  document.addEventListener('keydown', escBtnHandler);
+  errorBtn.addEventListener('click', clickBtnHandler);
   errorModal.addEventListener('click', missClicksHandler);
 };
