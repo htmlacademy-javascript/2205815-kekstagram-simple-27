@@ -2,7 +2,6 @@ const pictureList = document.querySelector('.pictures');
 const template = document.querySelector('#picture').content.querySelector('.picture');
 const hiddenTitle = document.querySelector('.pictures__title');
 const photoFragment = document.createDocumentFragment();
-
 hiddenTitle.classList.remove('visually-hidden');
 
 const createPhoto = ({ url, description, likes, comments }) => {

@@ -20,15 +20,19 @@ const disableSubmitButton = () => {
   submitButton.disabled = true;
 };
 
-export const enableSubmitButton = () => {
+const enableSubmitButton = () => {
   submitButton.textContent = 'Опубликовать';
   submitButton.disabled = false;
 };
 
-export const imageFormEditClickHandler = () => {
+const resetImageFormEdit = () => {
   imageFormEdit.classList.add('hidden');
   documentBody.classList.remove('modal-open');
   imageForm.reset();
+};
+
+const imageFormEditClickHandler = () => {
+  resetImageFormEdit();
   setInitialScale();
   resetImageEffects();
 };

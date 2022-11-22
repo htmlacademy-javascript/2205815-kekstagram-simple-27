@@ -5,4 +5,20 @@ import './picture-scale.js';
 import {getDataPictures} from './api.js';
 import {showDataErrorMessage} from './dialogs.js';
 
-getDataPictures(renderPhotos, showDataErrorMessage);
+const dataErrorMessageOpenHandler = () => {
+  showDataErrorMessage();
+};
+
+const usersPhotosRenderHandler = (photos) => {
+  renderPhotos(photos);
+};
+
+const onSuccess = (photos) => {
+  usersPhotosRenderHandler(photos);
+};
+
+const onError = () => {
+  dataErrorMessageOpenHandler();
+};
+
+getDataPictures(onSuccess, onError);
