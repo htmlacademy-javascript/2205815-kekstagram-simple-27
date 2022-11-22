@@ -1,5 +1,5 @@
 import {postDataPictures} from './api.js';
-import {onSuccess, onError} from './dialogs.js';
+import {showSuccessDialog, showErrorDialog} from './dialogs.js';
 import {setInitialScale} from './picture-scale.js';
 
 const uploadButton = document.querySelector('.img-upload__input');
@@ -37,6 +37,17 @@ const imageFormEditKeydownHandler = (evt) => {
   if (evt.key === 'Escape') {
     imageFormEditClickHandler();
   }
+};
+
+const onSuccess = () => {
+  showSuccessDialog();
+  enableSubmitButton();
+  imageFormEditClickHandler();
+};
+
+const onError = () => {
+  showErrorDialog();
+  enableSubmitButton();
 };
 
 const formSubmitHandler = (evt) => {
