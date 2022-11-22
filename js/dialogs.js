@@ -6,11 +6,11 @@ let activeDialog = null;
 
 const removeModal = () => {
   activeDialog.remove();
-  document.removeEventListener('keydown', dialogClickdownHandler);
+  document.removeEventListener('keydown', dialogKeydownHandler);
   activeDialog = null;
 };
 
-function dialogClickdownHandler (evt) {
+function dialogKeydownHandler (evt) {
   if (evt.key === 'Escape') {
     removeModal();
   }
@@ -34,7 +34,7 @@ export const showSuccessDialog = () => {
   successModal.addEventListener('click', dialogClickHandler);
   documentBody.append(successModal);
   activeDialog = successModal;
-  document.addEventListener('keydown', dialogClickdownHandler);
+  document.addEventListener('keydown', dialogKeydownHandler);
 };
 
 export const showErrorDialog = () => {
@@ -42,5 +42,5 @@ export const showErrorDialog = () => {
   errorModal.addEventListener('click', dialogClickHandler);
   documentBody.append(errorModal);
   activeDialog = errorModal;
-  document.addEventListener('keydown', dialogClickdownHandler);
+  document.addEventListener('keydown', dialogKeydownHandler);
 };
