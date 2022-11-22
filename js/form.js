@@ -1,51 +1,57 @@
 import {postDataPictures} from './api.js';
-import {showSuccessDialog} from './dialogs.js';
-import {showErrorDialog} from './dialogs.js';
+import {onSuccess, onError} from './dialogs.js';
 import {setInitialScale} from './picture-scale.js';
 
-const uploadBtn = document.querySelector('.img-upload__input');
+const uploadButton = document.querySelector('.img-upload__input');
 const imageFormEdit = document.querySelector('.img-upload__overlay');
-const closeBtn = imageFormEdit.querySelector('.img-upload__cancel');
+const closeButton = imageFormEdit.querySelector('.img-upload__cancel');
 const imageForm = document.querySelector('#upload-select-image');
-const submitBtn = imageForm.querySelector('#upload-submit');
+const submitButton = imageForm.querySelector('#upload-submit');
 const imagePreview = document.querySelector('.img-upload__preview');
+const documentBody = document.querySelector('body');
 
-export const disableSubmitBtn = () => {
-  submitBtn.textContent = 'Опубликовать';
-  submitBtn.disabled = true;
-};
-
-export const enableSubmitBtn = () => {
-  submitBtn.textContent = 'Опубликовать';
-  submitBtn.disabled = false;
-};
-
-export const closeForm = () => {
-  imageFormEdit.classList.add('hidden');
-  imageForm.reset();
+const resetImageEffects = () => {
   imagePreview.classList = '';
-  setInitialScale();
-  imagePreview.style.transform = 'scale(100%)';
+  imagePreview.removeAttribute('style');
 };
 
-const escImageFormEditHandler = (evt) => {
+const disableSubmitButton = () => {
+  submitButton.textContent = 'Опубликовать';
+  submitButton.disabled = true;
+};
+
+export const enableSubmitButton = () => {
+  submitButton.textContent = 'Опубликовать';
+  submitButton.disabled = false;
+};
+
+export const imageFormEditClickHandler = () => {
+  imageFormEdit.classList.add('hidden');
+  documentBody.classList.remove('modal-open');
+  imageForm.reset();
+  setInitialScale();
+  resetImageEffects();
+};
+
+const imageFormEditKeydownHandler = (evt) => {
   if (evt.key === 'Escape') {
-    closeForm();
+    imageFormEditClickHandler();
   }
 };
 
 const formSubmitHandler = (evt) => {
   evt.preventDefault();
-  disableSubmitBtn();
+  disableSubmitButton();
   const formData = new FormData(evt.target);
-  postDataPictures(formData, showSuccessDialog, showErrorDialog);
+  postDataPictures(formData, onSuccess, onError);
 };
 
-const showFormEdit = () => {
-  imageForm.addEventListener('keydown', escImageFormEditHandler);
+const uploadChangeButtonHandler = () => {
+  imageForm.addEventListener('keydown', imageFormEditKeydownHandler);
   imageForm.addEventListener('submit', formSubmitHandler);
-  closeBtn.addEventListener('click', closeForm);
+  closeButton.addEventListener('click', imageFormEditClickHandler);
   imageFormEdit.classList.remove('hidden');
+  documentBody.classList.add('modal-open');
 };
 
-uploadBtn.addEventListener('change', showFormEdit);
+uploadButton.addEventListener('change', uploadChangeButtonHandler);

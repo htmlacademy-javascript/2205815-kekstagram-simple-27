@@ -25,5 +25,5 @@ const createPhotosList = (arrayOfPhotos) => {
 export const renderPhotos = (arrayOfPhotos) => {
   const photosList = createPhotosList(arrayOfPhotos);
 
-  pictureList.appendChild(photosList);
+  pictureList.append(photosList);
 };

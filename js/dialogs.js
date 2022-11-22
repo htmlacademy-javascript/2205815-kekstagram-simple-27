@@ -1,56 +1,59 @@
-import {enableSubmitBtn, closeForm} from './form.js';
+import {enableSubmitButton, imageFormEditClickHandler} from './form.js';
 
-const templateSuccess = document.querySelector('#success').content.querySelector('.success');
-const templateError = document.querySelector('#error').content.querySelector('.error');
-const templateDataError = document.querySelector('#data__error').content.querySelector('.data__error');
+const templateSuccessDialog = document.querySelector('#success').content.querySelector('.success');
+const templateErrorDialog = document.querySelector('#error').content.querySelector('.error');
+const templateDataErrorMessage = document.querySelector('#data__error').content.querySelector('.data__error');
 const documentBody = document.querySelector('body');
-const successModal = templateSuccess.cloneNode(true);
-const errorModal = templateError.cloneNode(true);
-const dataErrorModal = templateDataError.cloneNode(true);
+let activeDialog = null;
 
-
-const removeModals = () => {
-  successModal.remove();
-  errorModal.remove();
-  dataErrorModal.remove();
+const removeModal = () => {
+  activeDialog.remove();
+  document.removeEventListener('keydown', dialogClickdownHandler);
+  activeDialog = null;
 };
 
-const clickBtnHandler = () => {
-  removeModals();
-};
-
-const escBtnHandler = (evt) => {
+function dialogClickdownHandler (evt) {
   if (evt.key === 'Escape') {
-    removeModals();
+    removeModal();
   }
-};
+}
 
-const missClicksHandler = (evt) => {
-  if (evt.target === evt.currentTarget) {
-    removeModals();
+const dialogClickHandler = (evt) => {
+  if (evt.target.hasAttribute('data-dialog-close')) {
+    removeModal();
   }
 };
 
 export const showDataErrorMessage = () => {
-  documentBody.appendChild(dataErrorModal);
-  setTimeout(removeModals, 1500);
+  const dataErrorModal = templateDataErrorMessage.cloneNode(true);
+  documentBody.append(dataErrorModal);
+  activeDialog = dataErrorModal;
+  setTimeout(removeModal, 1500);
 };
 
-export const showSuccessDialog = () => {
-  closeForm();
-  enableSubmitBtn();
-  documentBody.appendChild(successModal);
-  const successBtn = successModal.querySelector('.success__button');
-  document.addEventListener('keydown', escBtnHandler);
-  successBtn.addEventListener('click', clickBtnHandler);
-  successModal.addEventListener('click', missClicksHandler);
+const showSuccessDialog = () => {
+  const successModal = templateSuccessDialog.cloneNode(true);
+  successModal.addEventListener('click', dialogClickHandler);
+  documentBody.append(successModal);
+  activeDialog = successModal;
+  document.addEventListener('keydown', dialogClickdownHandler);
 };
 
-export const showErrorDialog = () => {
-  enableSubmitBtn();
-  documentBody.appendChild(errorModal);
-  const errorBtn = errorModal.querySelector('.error__button');
-  document.addEventListener('keydown', escBtnHandler);
-  errorBtn.addEventListener('click', clickBtnHandler);
-  errorModal.addEventListener('click', missClicksHandler);
+const showErrorDialog = () => {
+  const errorModal = templateErrorDialog.cloneNode(true);
+  errorModal.addEventListener('click', dialogClickHandler);
+  documentBody.append(errorModal);
+  activeDialog = errorModal;
+  document.addEventListener('keydown', dialogClickdownHandler);
+};
+
+export const onSuccess = () => {
+  showSuccessDialog();
+  enableSubmitButton();
+  imageFormEditClickHandler();
+};
+
+export const onError = () => {
+  showErrorDialog();
+  enableSubmitButton();
 };

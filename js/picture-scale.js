@@ -9,7 +9,7 @@ const buttonsList = document.querySelector('.img-upload__scale');
 const scaleControl = document.querySelector('.scale__control--value');
 
 export const setInitialScale = () => {
-  scaleControl.value = MAX_VALUE_SCALE;
+  scaleControl.value = `${MAX_VALUE_SCALE}%`;
 };
 
 const changeScale = (step) => {
