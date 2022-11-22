@@ -66,3 +66,4 @@ const uploadChangeButtonHandler = () => {
 };
 
 uploadButton.addEventListener('change', uploadChangeButtonHandler);
+
