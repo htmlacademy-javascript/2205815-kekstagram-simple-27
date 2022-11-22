@@ -1,5 +1,9 @@
-import { renderPhotos } from './photoRendering.js';
-import { getPhotos } from './data.js';
+import {renderPhotos} from './users-pictures.js';
 import './form.js';
+import './picture-effects.js';
+import './picture-scale.js';
+import {getDataPictures} from './api.js';
+import {showDataErrorMessage} from './dialogs.js';
 
-renderPhotos(getPhotos(25));
+
+getDataPictures(renderPhotos, showDataErrorMessage);

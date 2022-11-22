@@ -1198,6 +1198,7 @@ main {
   */
 
 .error,
+.data__error,
 .success {
   position: fixed;
   display: flex;
