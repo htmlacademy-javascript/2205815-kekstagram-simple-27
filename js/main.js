@@ -5,8 +5,9 @@ import './picture-scale.js';
 import {getDataPictures} from './api.js';
 import {showDataErrorMessage} from './dialogs.js';
 
-const onSuccess = (photos) => {
-  renderPhotos(photos);
+
+const onSuccess = (data) => {
+  renderPhotos(data);
 };
 
 const onError = () => {
