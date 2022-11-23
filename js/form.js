@@ -1,5 +1,5 @@
 import {postDataPictures} from './api.js';
-import {onSuccess, onError} from './dialogs.js';
+import {showSuccessDialog, showErrorDialog} from './dialogs.js';
 import {setInitialScale} from './picture-scale.js';
 
 const uploadButton = document.querySelector('.img-upload__input');
@@ -8,7 +8,6 @@ const closeButton = imageFormEdit.querySelector('.img-upload__cancel');
 const imageForm = document.querySelector('#upload-select-image');
 const submitButton = imageForm.querySelector('#upload-submit');
 const imagePreview = document.querySelector('.img-upload__preview');
-const documentBody = document.querySelector('body');
 
 const resetImageEffects = () => {
   imagePreview.classList = '';
@@ -27,7 +26,7 @@ export const enableSubmitButton = () => {
 
 export const imageFormEditClickHandler = () => {
   imageFormEdit.classList.add('hidden');
-  documentBody.classList.remove('modal-open');
+  document.body.classList.remove('modal-open');
   imageForm.reset();
   setInitialScale();
   resetImageEffects();
@@ -37,6 +36,17 @@ const imageFormEditKeydownHandler = (evt) => {
   if (evt.key === 'Escape') {
     imageFormEditClickHandler();
   }
+};
+
+const onSuccess = () => {
+  showSuccessDialog();
+  enableSubmitButton();
+  imageFormEditClickHandler();
+};
+
+const onError = () => {
+  showErrorDialog();
+  enableSubmitButton();
 };
 
 const formSubmitHandler = (evt) => {
@@ -51,7 +61,7 @@ const uploadChangeButtonHandler = () => {
   imageForm.addEventListener('submit', formSubmitHandler);
   closeButton.addEventListener('click', imageFormEditClickHandler);
   imageFormEdit.classList.remove('hidden');
-  documentBody.classList.add('modal-open');
+  document.body.classList.add('modal-open');
 };
 
 uploadButton.addEventListener('change', uploadChangeButtonHandler);
