@@ -13,7 +13,7 @@ export const setInitialScale = () => {
 };
 
 const changeScale = (step) => {
-  let currentScale = scaleControl.value.replace('%', '');
+  let currentScale = document.querySelector('.scale__control--value').value.replace('%', '');
   const value = Number(currentScale) + step;
   if (step < 0) {
     currentScale = Math.max(MIN_VALUE_SCALE, value);
