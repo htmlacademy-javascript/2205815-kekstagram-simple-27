@@ -1,4 +1,12 @@
 import {renderPhotos} from './users-pictures.js';
 import './form.js';
 
-renderPhotos(getPhotos(25));
+const onSuccess = (photos) => {
+  renderPhotos(photos);
+};
+
+const onError = () => {
+  showDataErrorMessage();
+};
+
+getDataPictures(onSuccess, onError);
