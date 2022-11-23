@@ -1,5 +1,5 @@
 import {postDataPictures} from './api.js';
-import {onSuccess, onError} from './dialogs.js';
+import {showSuccessDialog, showErrorDialog} from './dialogs.js';
 import {setInitialScale} from './picture-scale.js';
 
 const uploadButton = document.querySelector('.img-upload__input');
@@ -20,7 +20,7 @@ const disableSubmitButton = () => {
   submitButton.disabled = true;
 };
 
-const enableSubmitButton = () => {
+export const enableSubmitButton = () => {
   submitButton.textContent = 'Опубликовать';
   submitButton.disabled = false;
 };
@@ -29,18 +29,6 @@ export const imageFormEditClickHandler = () => {
   imageFormEdit.classList.add('hidden');
   documentBody.classList.remove('modal-open');
   imageForm.reset();
-  setInitialScale();
-  resetImageEffects();
-};
-
-const imageFormEditKeydownHandler = (evt) => {
-  if (evt.key === 'Escape') {
-    imageFormEditClickHandler();
-  }
-};
-
-const imageFormEditClickHandler = () => {
-  resetImageFormEdit();
   setInitialScale();
   resetImageEffects();
 };
@@ -69,15 +57,12 @@ const formSubmitHandler = (evt) => {
   postDataPictures(formData, onSuccess, onError);
 };
 
-const cancelKeydownHandler = (evt) => {
-  if(evt.key === 'Escape'){
-    closeFormClickHandler();
-  }
+const uploadChangeButtonHandler = () => {
+  imageForm.addEventListener('keydown', imageFormEditKeydownHandler);
+  imageForm.addEventListener('submit', formSubmitHandler);
+  closeButton.addEventListener('click', imageFormEditClickHandler);
+  imageFormEdit.classList.remove('hidden');
+  documentBody.classList.add('modal-open');
 };
 
-uploadBtn.addEventListener('change', () => {
-  document.addEventListener('keydown', cancelKeydownHandler);
-  imageForm.addEventListener('submit', formSubmitHandler);
-  closeBtn.addEventListener('click', closeFormClickHandler);
-  imageFormEdit.classList.remove('hidden');
-});
+uploadButton.addEventListener('change', uploadChangeButtonHandler);
