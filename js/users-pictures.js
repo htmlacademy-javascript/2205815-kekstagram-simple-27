@@ -1,6 +1,7 @@
 const pictureList = document.querySelector('.pictures');
 const template = document.querySelector('#picture').content.querySelector('.picture');
 const hiddenTitle = document.querySelector('.pictures__title');
+const photoFragment = document.createDocumentFragment();
 
 hiddenTitle.classList.remove('visually-hidden');
 
@@ -14,10 +15,7 @@ const createPhoto = ({ url, description, likes, comments }) => {
 };
 
 const createPhotosList = (arrayOfPhotos) => {
-<<<<<<<< HEAD:js/photoRendering.js
   const photoFragment = document.createDocumentFragment();
-========
->>>>>>>> 0147a6526f071e81f6c36558d681bb93197c7e46:js/users-pictures.js
   arrayOfPhotos.forEach((photo) => {
     const photoElement = createPhoto(photo);
     photoFragment.appendChild(photoElement);

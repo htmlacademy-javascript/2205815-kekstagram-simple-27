@@ -20,7 +20,7 @@ const disableSubmitButton = () => {
   submitButton.disabled = true;
 };
 
-export const enableSubmitButton = () => {
+const enableSubmitButton = () => {
   submitButton.textContent = 'Опубликовать';
   submitButton.disabled = false;
 };
