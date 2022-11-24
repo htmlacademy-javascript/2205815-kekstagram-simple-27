@@ -1,8 +1,6 @@
 const pictureList = document.querySelector('.pictures');
 const template = document.querySelector('#picture').content.querySelector('.picture');
-const hiddenTitle = document.querySelector('.pictures__title');
-
-hiddenTitle.classList.remove('visually-hidden');
+const photoFragment = document.createDocumentFragment();
 
 const createPhoto = ({ url, description, likes, comments }) => {
   const photoElement = template.cloneNode(true);
@@ -14,7 +12,6 @@ const createPhoto = ({ url, description, likes, comments }) => {
 };
 
 const createPhotosList = (arrayOfPhotos) => {
-  const photoFragment = document.createDocumentFragment();
   arrayOfPhotos.forEach((photo) => {
     const photoElement = createPhoto(photo);
     photoFragment.appendChild(photoElement);
