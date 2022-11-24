@@ -4,7 +4,7 @@ const MIN_VALUE_SCALE = 25;
 
 const smallerBtn = document.querySelector('.scale__control--smaller');
 const biggerBtn = document.querySelector('.scale__control--bigger');
-const imagePreview = document.querySelector('#image');
+const imagePreview = document.querySelector('.img-upload__preview');
 const buttonsList = document.querySelector('.img-upload__scale');
 const scaleControl = document.querySelector('.scale__control--value');
 
@@ -13,7 +13,7 @@ export const setInitialScale = () => {
 };
 
 const changeScale = (step) => {
-  let currentScale = scaleControl.value.replace('%', '');
+  let currentScale = document.querySelector('.scale__control--value').value.replace('%', '');
   const value = Number(currentScale) + step;
   if (step < 0) {
     currentScale = Math.max(MIN_VALUE_SCALE, value);

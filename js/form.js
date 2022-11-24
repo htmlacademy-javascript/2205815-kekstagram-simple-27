@@ -1,5 +1,5 @@
 import {postDataPictures} from './api.js';
-import {showSuccessDialog, showErrorDialog} from './dialogs.js';
+import {onSuccess, onError} from './dialogs.js';
 import {setInitialScale} from './picture-scale.js';
 
 const uploadButton = document.querySelector('.img-upload__input');
@@ -11,8 +11,8 @@ const imagePreview = document.querySelector('.img-upload__preview');
 const documentBody = document.querySelector('body');
 
 const resetImageEffects = () => {
-  imagePreview.removeAttribute('style');
   imagePreview.classList = '';
+  imagePreview.removeAttribute('style');
 };
 
 const disableSubmitButton = () => {
@@ -27,7 +27,7 @@ export const enableSubmitButton = () => {
 
 export const imageFormEditClickHandler = () => {
   imageFormEdit.classList.add('hidden');
-  document.body.classList.remove('modal-open');
+  documentBody.classList.remove('modal-open');
   imageForm.reset();
   setInitialScale();
   resetImageEffects();
@@ -51,7 +51,7 @@ const uploadChangeButtonHandler = () => {
   imageForm.addEventListener('submit', formSubmitHandler);
   closeButton.addEventListener('click', imageFormEditClickHandler);
   imageFormEdit.classList.remove('hidden');
-  document.body.classList.add('modal-open');
+  documentBody.classList.add('modal-open');
 };
 
 uploadButton.addEventListener('change', uploadChangeButtonHandler);

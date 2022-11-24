@@ -1,6 +1,9 @@
+import {enableSubmitButton, imageFormEditClickHandler} from './form.js';
+
 const templateSuccessDialog = document.querySelector('#success').content.querySelector('.success');
 const templateErrorDialog = document.querySelector('#error').content.querySelector('.error');
 const templateDataErrorMessage = document.querySelector('#data__error').content.querySelector('.data__error');
+const documentBody = document.querySelector('body');
 let activeDialog = null;
 
 const removeModal = () => {
@@ -23,23 +26,34 @@ const dialogClickHandler = (evt) => {
 
 export const showDataErrorMessage = () => {
   const dataErrorModal = templateDataErrorMessage.cloneNode(true);
-  document.body.append(dataErrorModal);
+  documentBody.append(dataErrorModal);
   activeDialog = dataErrorModal;
   setTimeout(removeModal, 1500);
 };
 
-export const showSuccessDialog = () => {
+const showSuccessDialog = () => {
   const successModal = templateSuccessDialog.cloneNode(true);
   successModal.addEventListener('click', dialogClickHandler);
-  document.body.append(successModal);
+  documentBody.append(successModal);
   activeDialog = successModal;
   document.addEventListener('keydown', dialogClickdownHandler);
 };
 
-export const showErrorDialog = () => {
+const showErrorDialog = () => {
   const errorModal = templateErrorDialog.cloneNode(true);
   errorModal.addEventListener('click', dialogClickHandler);
-  document.body.append(errorModal);
+  documentBody.append(errorModal);
   activeDialog = errorModal;
   document.addEventListener('keydown', dialogClickdownHandler);
+};
+
+export const onSuccess = () => {
+  showSuccessDialog();
+  enableSubmitButton();
+  imageFormEditClickHandler();
+};
+
+export const onError = () => {
+  showErrorDialog();
+  enableSubmitButton();
 };
