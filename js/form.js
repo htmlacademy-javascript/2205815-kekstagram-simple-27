@@ -7,7 +7,7 @@ const imageFormEdit = document.querySelector('.img-upload__overlay');
 const closeButton = imageFormEdit.querySelector('.img-upload__cancel');
 const imageForm = document.querySelector('#upload-select-image');
 const submitButton = imageForm.querySelector('#upload-submit');
-const imagePreview = document.querySelector('.img-upload__preview');
+const imagePreview = document.querySelector('#image');
 const documentBody = document.querySelector('body');
 
 const resetImageEffects = () => {

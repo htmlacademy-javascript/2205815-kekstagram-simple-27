@@ -1,7 +1,7 @@
-const picturePreview = document.querySelector('.img-upload__preview');
 const effectList = document.querySelector('.effects__list');
+const imagePreview = document.querySelector('#image');
 
 effectList.addEventListener('click', (evt) => {
-  picturePreview.classList = '';
-  picturePreview.classList.add(`effects__preview--${evt.target.dataset.effect}`);
+  imagePreview.classList = '';
+  imagePreview.classList.add(`effects__preview--${evt.target.dataset.effect}`);
 });
